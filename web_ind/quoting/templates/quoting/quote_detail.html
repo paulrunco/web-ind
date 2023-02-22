@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Quote {{quote.id}}{% endblock title %}
+
+{% block content %}
+<main>
+    <a href="{% url 'quotes-list' %}">back to list</a>
+    <header>
+        <h2>Quote {{quote.id|stringformat:"08d"}}</h2>
+        <h3>{{quote.customer}}</h3>
+    </header>
+    <table>
+        <tr>
+            <th>Line No</th>
+            <th>Part</th>
+            <th>Revision</th>
+            <th>Price</th>
+            <th>Unit</th>
+        </tr>
+        {% for line in lines %}
+        <tr>
+            <td>{{line.number}}</td>
+            <td>{{line.part}}</td>
+            <td>{{line.revision}}</td>
+            <td>${{line.price}}</td>
+            <td>{{line.unit}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+{% endblock content %}

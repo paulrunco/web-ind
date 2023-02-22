@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Quotes{% endblock title %}Quotes
+
+{% block content %}
+<main>
+    <h1>Quotes</h1>
+
+    <table>
+        <tr>
+            <th>Quote No</th>
+            <th>Customer</th>
+            <th>Creation Date</th>
+            <th>Engineer</th>
+            <th>Sales</th>
+            <th>Status</th>
+            <th>Last Update</th>
+        </tr>
+        {% for quote in quotes %}
+        <tr>
+            <td>
+                <a href="{% url 'quote-detail' pk=quote.id %}">
+                    {{quote.id|stringformat:"08d"}}
+                </a>
+            </td>
+            <td>{{quote.customer}}</td>
+            <td>{{quote.creation_date}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{quote.updated_at}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+{% endblock content %}
